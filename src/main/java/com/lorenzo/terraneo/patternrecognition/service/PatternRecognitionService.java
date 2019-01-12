@@ -37,6 +37,7 @@ public class PatternRecognitionService {
                 .collect(Collectors.toList());
     }
 
+    // In case of multiple lines with the same number of points the method return the first in the data structure
     public List<Point> getLongestLineCollinearPoints(int n){
         return getLinesCollinearPoints(n)
                 .stream()
