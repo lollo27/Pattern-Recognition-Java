@@ -51,6 +51,7 @@ public class PatternRecognitionController {
         return new ResponseEntity<>(this.recognitionService.getLinesCollinearPoints(n), HttpStatus.OK);
     }
 
+    // In case of multiple lines with the same number of points the method return the first in the data structure
     @RequestMapping(value = "/line/{n}", method = RequestMethod.GET)
     public ResponseEntity getLongestLineCollinearPoint(@PathVariable("n") int n){
         if(n < 2){
