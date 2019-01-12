@@ -68,7 +68,7 @@ public class Plane {
                 .stream()
                 .flatMap(Collection::stream)
                 .forEach(l -> {
-                    if(pointCollinearToLine(p,l)){
+                    if(p.pointCollinearToLine(l)){
                         l.addPoint(p);
                     }
                     List<Line> lineList = tmpMap.get(l.getPoints().size());
@@ -82,23 +82,6 @@ public class Plane {
 
         this.lines = tmpMap;
         newLinesInPlane(p);
-    }
-
-
-    /*
-    Check if a point is collinear to a line
-     */
-
-    public boolean pointCollinearToLine(Point p, Line l){
-        final List<Point> linePoints = l.getPoints();
-        final Point p1 = linePoints.get(0);
-        final Point p2 = linePoints.get(1);
-
-        double calcolate = (p2.getY() - p1.getY()) * p.getX();
-        calcolate += (p1.getX() - p2.getX()) * p.getY();
-        calcolate += (p2.getX() * p1.getY() - p2.getY() * p1.getX());
-
-        return calcolate == 0.0;
     }
 
     /*
@@ -126,7 +109,7 @@ public class Plane {
     }
 
     /*
-    This method check if two points and them line is already stored
+    This method check if two points and them line are already stored
      */
 
     private boolean inLine(Point p1, Point p2){

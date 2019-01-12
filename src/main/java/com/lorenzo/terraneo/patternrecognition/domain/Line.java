@@ -10,7 +10,7 @@ public class Line {
 
     private Set<Point> points;
 
-    public Line(Set<Point> points){
+    private Line(Set<Point> points){
         this.points = points;
     }
 
@@ -36,6 +36,15 @@ public class Line {
             throw new LineErrorException("At least 2 points for a line");
         }
 
+        if(pointSet.size() > 2){
+            Line l = newLine(points[0],points[1]);
+            for(int i = 0; i < pointSet.size(); i++){
+                if(!points[i].pointCollinearToLine(l)){
+                    throw new LineErrorException("The points are not collinear");
+                }
+            }
+        }
+
         return new Line(pointSet);
     }
 
@@ -44,7 +53,8 @@ public class Line {
     }
 
     public void addPoint(Point p){
-        this.points.add(p);
+        if(p.pointCollinearToLine(this)){
+            this.points.add(p);
+        }
     }
-
 }

@@ -1,5 +1,7 @@
 package com.lorenzo.terraneo.patternrecognition.domain;
 
+import java.util.List;
+
 public class Point {
 
     private double x;
@@ -38,5 +40,21 @@ public class Point {
         else{
             return false;
         }
+    }
+
+        /*
+    Check if a point is collinear to a line
+     */
+
+    public boolean pointCollinearToLine(Line l){
+        final List<Point> linePoints = l.getPoints();
+        final Point p1 = linePoints.get(0);
+        final Point p2 = linePoints.get(1);
+
+        double calcolate = (p2.getY() - p1.getY()) * this.getX();
+        calcolate += (p1.getX() - p2.getX()) * this.getY();
+        calcolate += (p2.getX() * p1.getY() - p2.getY() * p1.getX());
+
+        return calcolate == 0.0;
     }
 }
