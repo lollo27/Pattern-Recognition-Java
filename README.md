@@ -13,4 +13,4 @@ Maven project that use Spring Boot 2.1.1 developed in Java that allow the use of
 - Get the longest line segment passing through at least N points: GET "/line/{n}"
 - Remove all points from the space: DELETE "/space"
 
-There are also some simple JUnit test for the primary functions of the software.
+There are also some simple JUnit tests for the primary functions of the software.
